@@ -27,6 +27,11 @@
 .title + .icon {
   margin-left: 8px;
 }
+.icon {
+  display: block;
+  width: 20px;
+  text-align: center;
+}
 
 .rounded {
   font-size: 1.4rem;

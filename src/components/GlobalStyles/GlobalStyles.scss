@@ -1,5 +1,5 @@
 @import "normalize.css";
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap");
+@import url("http://fonts.cdnfonts.com/css/proxima-nova-2?styles=44819,44821,44813");
 
 :root {
   --primary: #fe2c55;
@@ -9,7 +9,7 @@
   --default-layout-horizontal-spacer: 24px;
   --black: #000;
   --white: #fff;
-  --text-color: #333;
+  --text-color: #161823;
 }
 * {
   margin: 0;
@@ -20,7 +20,7 @@ html {
   font-size: 62.5%;
 }
 body {
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: "Proxima Nova", sans-serif;
   font-size: 1.6rem;
   color: var(--text-color);
   line-height: 1.5;
@@ -34,4 +34,24 @@ input,
 a[href] {
   color: var(--text-color);
   text-decoration: none;
+}
+
+// Custom Tippy tooltip
+body {
+  .tippy-box {
+    background-color: rgba(84, 84, 84, 0.92);
+    border-radius: 8px;
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 2.2rem;
+  }
+  .tippy-arrow {
+    color: rgba(84, 84, 84, 0.92);
+  }
+  .tippy-box[data-placement^="bottom"] > .tippy-arrow::before {
+    top: -8px;
+  }
+  .tippy-content {
+    padding: 8px 9px;
+  }
 }

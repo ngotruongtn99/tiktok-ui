@@ -10,7 +10,6 @@ import {
   faEllipsisVertical,
   faGears,
   faMagnifyingGlass,
-  faPlus,
   faSignOut,
   faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
@@ -22,13 +21,13 @@ import { Wrapper as PopperWrapper } from "~/components/Popper";
 import AccountItem from "~/components/AccountItem";
 import Button from "~/components/Button";
 import Menu from "~/components/Popper/Menu";
+import Image from "~/components/Image";
 import {
   faCircleQuestion,
   faKeyboard,
-  faMessage,
-  faPaperPlane,
   faUser,
 } from "@fortawesome/free-regular-svg-icons";
+import { MessageIcon, InboxIcon, PlusIcon } from "~/components/Icons";
 
 const cx = classNames.bind(styles);
 
@@ -135,19 +134,23 @@ function Header() {
         </HeadlessTippy>
         <div className={cx("actions")}>
           <Button onlyOutline>
-            <FontAwesomeIcon className={cx("plus")} icon={faPlus} />
-            Upload
+            <PlusIcon className='plus-icon' />
+            <span>Upload</span>
           </Button>
           {currentUser ? (
             <>
               <Tippy delay={200} content='Message' placement='bottom'>
                 <button className={cx("actions-btn")}>
-                  <FontAwesomeIcon icon={faPaperPlane} />
+                  <MessageIcon
+                    // width='2.6rem'
+                    // height='2.9rem'
+                    className='message-icon'
+                  />
                 </button>
               </Tippy>
               <Tippy delay={200} content='Inbox' placement='bottom'>
                 <button className={cx("actions-btn")}>
-                  <FontAwesomeIcon icon={faMessage} />
+                  <InboxIcon />
                 </button>
               </Tippy>
             </>
@@ -159,10 +162,11 @@ function Header() {
             onChange={handleMenuChange}
           >
             {currentUser ? (
-              <img
+              <Image
                 className={cx("user-avatar")}
                 src='https://p16-sign-sg.tiktokcdn.com/aweme/720x720/tiktok-obj/87090b40251a403929954538fec402f0.jpeg?x-expires=1655953200&x-signature=xMMN9tiFp9er2jI7WhKuSHUvLjM%3D'
                 alt=''
+                fallback='https://static.fullstack.edu.vn/static/media/f8-icon.18cd71cfcfa33566a22b.png'
               />
             ) : (
               <button className={cx("more-btn")}>

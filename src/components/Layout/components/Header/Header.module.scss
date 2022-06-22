@@ -77,10 +77,6 @@
   color: rgba(22, 24, 35, 0.34);
 }
 
-.plus {
-  margin-right: 8px;
-}
-
 .search-btn {
   width: var(--search-button-width);
   height: 100%;
@@ -114,17 +110,18 @@
 }
 
 .actions-btn {
-  font-size: 2.2rem;
   background-color: transparent;
   color: #161823;
-  padding: 4px 12px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-left: 16px;
 }
 .user-avatar {
   width: 32px;
   height: 32px;
   object-fit: cover;
   border-radius: 100rem;
-  margin-left: 12px;
+  margin-left: 24px;
   cursor: pointer;
 }

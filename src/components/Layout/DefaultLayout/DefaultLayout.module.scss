@@ -4,6 +4,7 @@
   flex-direction: column;
 }
 .container {
+  margin-top: var(--default-layout-header-height);
   width: var(--default-layout-width);
   display: flex;
 }

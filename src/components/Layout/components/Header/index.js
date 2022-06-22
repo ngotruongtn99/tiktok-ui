@@ -1,24 +1,18 @@
 import classNames from "classnames/bind";
 import Tippy from "@tippyjs/react/";
 import "tippy.js/dist/tippy.css";
-import HeadlessTippy from "@tippyjs/react/headless";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCircleXmark,
   faCoins,
   faEarthAsia,
   faEllipsisVertical,
   faGears,
-  faMagnifyingGlass,
   faSignOut,
-  faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
-import { useEffect, useState } from "react";
 
 import styles from "./Header.module.scss";
 import images from "~/assets/images";
-import { Wrapper as PopperWrapper } from "~/components/Popper";
-import AccountItem from "~/components/AccountItem";
+
 import Button from "~/components/Button";
 import Menu from "~/components/Popper/Menu";
 import Image from "~/components/Image";
@@ -28,6 +22,7 @@ import {
   faUser,
 } from "@fortawesome/free-regular-svg-icons";
 import { MessageIcon, InboxIcon, PlusIcon } from "~/components/Icons";
+import Search from "../Search";
 
 const cx = classNames.bind(styles);
 
@@ -55,14 +50,6 @@ const MENU_ITEMS = [
 ];
 
 function Header() {
-  const [searchResult, setSearchResult] = useState([]);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setSearchResult([]);
-    }, 0);
-  }, []);
-
   const handleMenuChange = (menuItem) => {
     switch (menuItem.type) {
       case "language":
@@ -103,35 +90,9 @@ function Header() {
     <header className={cx("wrapper")}>
       <div className={cx("inner")}>
         <img src={images.logo} alt='logo' />
-        <HeadlessTippy
-          visible={searchResult.length > 0}
-          interactive
-          render={(attrs) => (
-            <div className={cx("search-result")} tabIndex='-1' {...attrs}>
-              <PopperWrapper>
-                <h4 className={cx("search-title")}>Account</h4>
-                <AccountItem />
-                <AccountItem />
-                <AccountItem />
-              </PopperWrapper>
-            </div>
-          )}
-        >
-          <div className={cx("search")}>
-            <input
-              placeholder='Search accounts and videos'
-              spellCheck={false}
-            />
-            <button className={cx("clear")}>
-              <FontAwesomeIcon icon={faCircleXmark} />
-            </button>
-            <FontAwesomeIcon className={cx("loading")} icon={faSpinner} />
 
-            <button className={cx("search-btn")}>
-              <FontAwesomeIcon icon={faMagnifyingGlass} />
-            </button>
-          </div>
-        </HeadlessTippy>
+        <Search />
+
         <div className={cx("actions")}>
           <Button onlyOutline>
             <PlusIcon className='plus-icon' />
@@ -141,16 +102,13 @@ function Header() {
             <>
               <Tippy delay={200} content='Message' placement='bottom'>
                 <button className={cx("actions-btn")}>
-                  <MessageIcon
-                    // width='2.6rem'
-                    // height='2.9rem'
-                    className='message-icon'
-                  />
+                  <MessageIcon className='message-icon' />
                 </button>
               </Tippy>
               <Tippy delay={200} content='Inbox' placement='bottom'>
-                <button className={cx("actions-btn")}>
+                <button className={cx("actions-btn", "inbox-icon")}>
                   <InboxIcon />
+                  <span className={cx("inbox-notify")}>12</span>
                 </button>
               </Tippy>
             </>

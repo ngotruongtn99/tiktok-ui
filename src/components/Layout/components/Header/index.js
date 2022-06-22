@@ -1,5 +1,6 @@
 import classNames from "classnames/bind";
 import Tippy from "@tippyjs/react/";
+import { Link } from "react-router-dom";
 import "tippy.js/dist/tippy.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -9,18 +10,18 @@ import {
   faGears,
   faSignOut,
 } from "@fortawesome/free-solid-svg-icons";
-
-import styles from "./Header.module.scss";
-import images from "~/assets/images";
-
-import Button from "~/components/Button";
-import Menu from "~/components/Popper/Menu";
-import Image from "~/components/Image";
 import {
   faCircleQuestion,
   faKeyboard,
   faUser,
 } from "@fortawesome/free-regular-svg-icons";
+
+import routesConfig from "~/config/routes";
+import styles from "./Header.module.scss";
+import images from "~/assets/images";
+import Button from "~/components/Button";
+import Menu from "~/components/Popper/Menu";
+import Image from "~/components/Image";
 import { MessageIcon, InboxIcon, PlusIcon } from "~/components/Icons";
 import Search from "../Search";
 
@@ -89,7 +90,9 @@ function Header() {
   return (
     <header className={cx("wrapper")}>
       <div className={cx("inner")}>
-        <img src={images.logo} alt='logo' />
+        <Link to={routesConfig.home} className={cx("logo-link")}>
+          <img src={images.logo} alt='logo' />
+        </Link>
 
         <Search />
 

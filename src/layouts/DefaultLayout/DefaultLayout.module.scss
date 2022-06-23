@@ -4,6 +4,7 @@
   flex-direction: column;
 }
 .container {
+  max-width: 100%;
   margin-top: var(--default-layout-header-height);
   width: var(--default-layout-width);
   display: flex;
